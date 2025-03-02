@@ -1,0 +1,19 @@
+.lc-animate-form {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 8px;
+
+  .el-form-item {
+    margin-bottom: 0;
+
+    &__label {
+      font-size: 12px;
+    }
+
+    .el-input {
+      .el-input-group__append {
+        padding: 0 12px;
+      }
+    }
+  }
+}

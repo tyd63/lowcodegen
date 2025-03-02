@@ -1,0 +1,24 @@
+.lc-animate-input-number {
+  position: relative;
+
+  .el-input-number {
+    width: 70px;
+  }
+
+  .el-input-number.is-controls-right .el-input__wrapper {
+    padding-right: 45px;
+    padding-left: 6px;
+  }
+
+  .lc-animate-input-number-unit {
+    position: absolute;
+    top: 50%;
+    right: 25%;
+    width: 14px;
+    font-size: 12px;
+    color: #666;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    line-height: 1;
+  }
+}

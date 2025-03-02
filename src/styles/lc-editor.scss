@@ -1,0 +1,38 @@
+.lc-editor-var {
+  --lc-material-width: 300px;
+  --lc-settings-width: 340px;
+  --lc-header-height: 48px;
+  --lc-breadcrumbs-height: 40px;
+  --lc-slot-min-height: 40px;
+  --le-ghost-placeholder-size: 5px;
+}
+
+.lc-ghost-block {
+  width: 100%;
+  height: var(--le-ghost-placeholder-size);
+  background-color: var(--el-color-primary);
+}
+
+.lc-ghost-inline-block {
+  display: inline-block;
+  width: var(--le-ghost-placeholder-size);
+  height: var(--height);
+  background-color: var(--el-color-primary);
+  vertical-align: middle;
+}
+
+.lc-drag-image {
+  display: inline-block;
+  height: 20px;
+  width: 76px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 12px;
+  background-color: var(--el-fill-color-darker);
+  cursor: move;
+}
+
+.lc-auto-size {
+  width: max-content;
+  height: max-content;
+}

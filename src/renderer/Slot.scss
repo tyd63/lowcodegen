@@ -1,0 +1,44 @@
+.lc-slot {
+  box-sizing: border-box;
+  position: relative;
+  height: 100%;
+  padding: 5px;
+  &.is-empty {
+    position: relative;
+    border: 1px dashed var(--el-border-color);
+    width: 100%;
+    min-width: 100px;
+    height: 100%;
+    min-height: 40px;
+    color: var(--el-text-color-placeholder);
+    box-sizing: border-box;
+    background-color: var(--el-fill-color-lighter);
+
+    &::after {
+      content: attr(data-empty);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 10;
+      width: max-content;
+      font-size: 12px;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &.is-dragging {
+    border-color: transparent;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: var(--el-color-primary-light-9);
+      opacity: 0.42;
+      outline: 1px dashed var(--el-color-primary);
+      outline-offset: -1px;
+      pointer-events: none;
+    }
+  }
+}

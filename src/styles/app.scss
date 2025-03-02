@@ -1,0 +1,15 @@
+@use './preflight.scss';
+@use './lc-editor.scss';
+@use './animation.scss';
+@use './dark.scss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,33 @@
+.lc-settings {
+  box-sizing: border-box;
+  border-left: var(--el-border);
+  width: var(--lc-settings-width);
+  height: 100%;
+  background-color: var(--el-bg-color);
+  flex-shrink: 0;
+
+  .lc-tabs {
+    height: calc(100% - var(--lc-breadcrumbs-height));
+
+    .el-tabs__nav {
+      padding: 0 18px;
+    }
+
+    .el-tabs__header {
+      margin: 0;
+      height: 40px;
+    }
+
+    .el-tab-pane {
+      padding: 12px 16px;
+    }
+
+    .el-tabs__nav-wrap::after {
+      height: 1px;
+    }
+
+    .el-tabs__content {
+      height: calc(100% - 40px);
+    }
+  }
+}

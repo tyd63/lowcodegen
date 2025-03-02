@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/prettier@latest/standalone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prettier@latest/plugins/html.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prettier@latest/plugins/babel.js"></script>
+
+    <script>
+      window.addEventListener('message', (e) => {
+        const data = e.data || {}
+
+        if (data.type === 'prettier') {
+          prettier
+            .format(data.code, {
+              parser: 'vue',
+              plugins: prettierPlugins
+            })
+            .then((code) => {
+              e.source.postMessage({ id: e.data.id, type: 'prettier_result', code })
+            })
+        }
+      })
+    </script>
+
+    <div style="padding: 0"></div>
+  </body>
+</html>

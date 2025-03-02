@@ -1,0 +1,9 @@
+.lc-breadcrumbs {
+  display: flex;
+  align-items: center;
+  border-bottom: var(--el-border);
+  padding: 0 16px;
+  height: var(--lc-breadcrumbs-height);
+  box-sizing: border-box;
+  gap: 3px;
+}

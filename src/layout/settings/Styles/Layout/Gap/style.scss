@@ -1,0 +1,184 @@
+.lc-layout-gap {
+  position: relative;
+  width: 100%;
+  height: 150px;
+}
+
+.lc-help-txt {
+  float: left;
+  margin-top: -3px;
+  margin-left: -8px;
+  font-size: 12px;
+  transform: scale(0.75);
+}
+
+.lc-layout-input {
+  border: 0;
+  font-size: 12px;
+  text-align: center;
+  color: #666;
+  background: transparent;
+  outline: 0;
+}
+
+.lc-layout-input-top {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  left: 0;
+  height: 20px;
+}
+
+.lc-layout-input-right {
+  position: absolute;
+  top: 0;
+  right: -20px;
+  bottom: 0;
+  margin: auto;
+  width: 20px;
+}
+
+.lc-layout-input-bottom {
+  position: absolute;
+  right: 0;
+  bottom: -20px;
+  left: 0;
+  height: 20px;
+}
+
+.lc-layout-input-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -20px;
+  margin: auto;
+  width: 20px;
+}
+
+.lc-layout-margin-top {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-top: 20px solid var(--el-border-color-lighter);
+  border-right: 20px solid transparent;
+  border-left: 20px solid transparent;
+  height: 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-top: 20px solid var(--el-border-color-light);
+  }
+}
+
+.lc-layout-margin-right {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  bottom: 5px;
+  border-top: 20px solid transparent;
+  border-right: 20px solid var(--el-border-color-lighter);
+  border-bottom: 20px solid transparent;
+  width: 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-right: 20px solid var(--el-border-color-light);
+  }
+}
+
+.lc-layout-margin-bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid var(--el-border-color-lighter);
+  border-left: 20px solid transparent;
+  height: 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-bottom: 20px solid var(--el-border-color-light);
+  }
+}
+
+.lc-layout-margin-left {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid var(--el-border-color-lighter);
+  width: 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-left: 20px solid var(--el-border-color-light);
+  }
+}
+
+.lc-layout-padding-top {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  left: 25px;
+  border-top: 20px solid var(--el-border-color-lighter);
+  border-right: 20px solid transparent;
+  border-left: 20px solid transparent;
+  height: 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-top: 20px solid var(--el-border-color-light);
+  }
+}
+
+.lc-layout-padding-right {
+  position: absolute;
+  top: 30px;
+  right: 25px;
+  bottom: 30px;
+  border-top: 20px solid transparent;
+  border-right: 20px solid var(--el-border-color-lighter);
+  border-bottom: 20px solid transparent;
+  width: 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-right: 20px solid var(--el-border-color-light);
+  }
+}
+
+.lc-layout-padding-bottom {
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  left: 25px;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid var(--el-border-color-lighter);
+  border-left: 20px solid transparent;
+  height: 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-bottom: 20px solid var(--el-border-color-light);
+  }
+}
+
+.lc-layout-padding-left {
+  position: absolute;
+  top: 30px;
+  bottom: 30px;
+  left: 25px;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid var(--el-border-color-lighter);
+  width: 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-left: 20px solid var(--el-border-color-light);
+  }
+}
