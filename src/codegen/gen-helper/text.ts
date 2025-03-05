@@ -14,6 +14,6 @@ export default generate_handler({
     return _attrs
   },
   getChildren(block) {
-    return block.props.content
+    return block.props.content as string
   }
 })

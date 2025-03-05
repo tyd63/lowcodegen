@@ -1,4 +1,4 @@
-import { generate_common_props, generate_common_style, generate_handler, imports, statements } from '../utils'
+import { generate_common_props, generate_handler, imports, statements } from '../utils'
 
 export default generate_handler({
   getAttrs(block, ctx) {
@@ -7,20 +7,11 @@ export default generate_handler({
     if (props.length) {
       _attrs.push(...props)
     }
-    const style = generate_common_style(block.style)
-    if (style.length) {
-      _attrs.push(style)
-    }
-
     if (block.model) {
       imports(ctx, 'vue', 'reactive')
       statements(ctx, 'formData', `reactive({})`)
       _attrs.unshift(['v-model', `formData.${block.model.modelValue}`])
     }
-
     return _attrs
-  },
-  getChildren() {
-    return ''
   }
 })

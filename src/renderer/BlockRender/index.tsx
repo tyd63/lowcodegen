@@ -1,8 +1,5 @@
 import { computed, createVNode, defineComponent } from 'vue'
 import type { PropType, VNodeProps } from 'vue'
-// import MoveIcon from '@/icons/Move.vue'
-// import { ElIcon } from 'element-plus'
-// import { isPage } from '@/utils/is'
 import { genPureProps, genPureStyle, genPureModel } from './render-helper'
 import { Block, Data } from '@/types'
 import { store } from '@/store'

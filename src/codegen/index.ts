@@ -49,14 +49,14 @@ const genVueSFC = async (ctx, formatter = true) => {
   })
 
   let sfc = `
- <script lang="ts" setup>
+  <script lang="ts" setup>
   ${imports.join('\n')}
   ${statements.join('\n')}
   ${fns.join('\n')}
   ${calls.join('\n')}
- </script>
- <template>${ctx.template}</template>
- `
+  </script>
+  <template>${ctx.template}</template>
+  `
 
   if (formatter) {
     sfc = await prettier(sfc)

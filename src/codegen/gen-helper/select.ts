@@ -1,4 +1,4 @@
-import { generate_common_props, generate_common_style, imports, generate_handler, statements, generate_common_icon } from '../utils'
+import { generate_common_props, generate_common_style, imports, generate_handler, statements } from '../utils'
 
 export default generate_handler({
   getAttrs(block, ctx) {
@@ -6,10 +6,6 @@ export default generate_handler({
     const props = generate_common_props(block.props, ['options'])
     if (props.length) {
       _attrs.push(...props)
-    }
-    const style = generate_common_style(block.style)
-    if (style.length) {
-      _attrs.push(style)
     }
 
     if (block.model) {
@@ -20,7 +16,9 @@ export default generate_handler({
 
     return _attrs
   },
-  getChildren(block) {
-    return block.props.options.map((opt) => `<el-option value="${opt.value}" label="${opt.label}" disabled="${opt.disabled}"></el-option>`).join('\n')
+  getChildren(block, ctx) {
+    const variable = `${block.model.modelValue}_options`
+    statements(ctx, variable, `${JSON.stringify(block.props.options)}`)
+    return `<el-option v-for="(item,idx) in ${variable}" :key="idx" :value="item.value" :label="item.label":disabled="item.disabled"></el-option>`
   }
 })

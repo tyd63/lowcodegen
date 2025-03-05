@@ -1,10 +1,16 @@
-import { generate_handler } from '../utils'
+import { generate_handler, resolve_attrs } from '../utils'
 
 export default generate_handler({
-  getAttrs(block: { id: any }) {
-    return [['id', block.id]]
+  getStartTag(tag, block, ctx) {
+    return `<${tag} ${resolve_attrs(this.getAttrs(block, ctx))}>`
   },
-  getChildren() {
-    return ''
+  getEndTag(tag) {
+    return `</${tag}>`
+  },
+  getAttrs(block: { id: any }) {
+    return [
+      ['data-id', block.id],
+      ['id', block.id]
+    ]
   }
 })

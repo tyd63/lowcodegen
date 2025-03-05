@@ -1,4 +1,4 @@
-import { ElInput } from 'element-plus'
+import { ElOption, ElSelect } from 'element-plus'
 import MapIcon from '@/icons/Map.vue'
 import { defineComponent } from '@/widgets/utils/define'
 import { genStyle } from '@/widgets/utils/style'
@@ -9,14 +9,19 @@ import { RenderWrapper } from '@/renderer/BlockRender/render-wrapper'
 
 const registerConfig = () => {
   return defineComponent({
-    name: '多行输入',
-    key: 'textarea',
+    name: '选择器(多选)',
+    key: 'select',
     group: 'form',
     draggable: true,
     icon: () => <MapIcon />,
-    props: genProps(),
+    props: {
+      multiple: {
+        value: true
+      },
+      ...genProps()
+    },
     model: {
-      modelValue: createInputProp({ label: 'v-model', value: 'textarea' })
+      modelValue: createInputProp({ label: 'v-model', value: 'selectMultiple' })
     },
     style: genStyle(),
     events: [],
@@ -27,7 +32,9 @@ const registerConfig = () => {
     render: ({ props, model, style }) => {
       return (
         <RenderWrapper styles={style}>
-          <ElInput {...props} {...model} type="textarea"></ElInput>
+          <ElSelect {...props} {...model}>
+            {props.options?.map((opt) => <ElOption key={opt.value} value={opt.value} label={opt.label} disabled={opt.disabled}></ElOption>)}
+          </ElSelect>
         </RenderWrapper>
       )
     }

@@ -5,6 +5,7 @@ import { genStyle } from '@/widgets/utils/style'
 import { renderPreview } from '@/widgets/utils/render'
 import { createInputProp } from '@/widgets/utils/props'
 import { genProps } from './props'
+import { RenderWrapper } from '@/renderer/BlockRender/render-wrapper'
 
 const registerConfig = () => {
   return defineComponent({
@@ -24,7 +25,11 @@ const registerConfig = () => {
       return renderPreview({ icon: component.icon, name: component.name })
     },
     render: ({ props, model, style }) => {
-      return <ElSlider {...props} {...model} style={style}></ElSlider>
+      return (
+        <RenderWrapper styles={style}>
+          <ElSlider {...props} {...model}></ElSlider>
+        </RenderWrapper>
+      )
     }
   })
 }

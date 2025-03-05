@@ -1,16 +1,13 @@
-import { generate_common_props, generate_common_style, imports, generate_handler, statements, generate_common_icon } from '../utils'
+import { generate_common_props, imports, generate_handler, statements, generate_common_icon } from '../utils'
 
 export default generate_handler({
   getAttrs(block, ctx) {
     const _attrs = []
-    const props = generate_common_props(block.props, ['active-icon', 'inactive-icon'])
+    const props = generate_common_props(block.props, ['active-icon', 'inactive-icon', 'options'])
     if (props.length) {
       _attrs.push(...props)
     }
-    const style = generate_common_style(block.style)
-    if (style.length) {
-      _attrs.push(style)
-    }
+
     if (block.model) {
       imports(ctx, 'vue', 'reactive')
       statements(ctx, 'formData', `reactive({})`)
@@ -21,8 +18,5 @@ export default generate_handler({
       _attrs.push(...icons)
     }
     return _attrs
-  },
-  getChildren() {
-    return ''
   }
 })

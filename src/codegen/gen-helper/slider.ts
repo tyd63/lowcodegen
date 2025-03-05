@@ -7,11 +7,6 @@ export default generate_handler({
     if (props.length) {
       _attrs.push(...props)
     }
-    const style = generate_common_style(block.style)
-    if (style.length) {
-      _attrs.push(style)
-    }
-
     if (block.model) {
       imports(ctx, 'vue', 'reactive')
       statements(ctx, 'formData', `reactive({})`)
@@ -19,8 +14,5 @@ export default generate_handler({
     }
 
     return _attrs
-  },
-  getChildren() {
-    return ''
   }
 })

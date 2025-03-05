@@ -5,6 +5,7 @@ import { genStyle } from '@/widgets/utils/style'
 import { renderPreview } from '@/widgets/utils/render'
 import { createInputProp } from '@/widgets/utils/props'
 import { genProps } from './props'
+import { RenderWrapper } from '@/renderer/BlockRender/render-wrapper'
 
 const registerConfig = () => {
   return defineComponent({
@@ -25,13 +26,15 @@ const registerConfig = () => {
     },
     render: ({ props, model, style }) => {
       return (
-        <ElRadioGroup {...props} {...model} style={style}>
-          {props.options.map((opt) => (
-            <ElRadio key={opt.value} value={opt.value} disabled={opt.disabled}>
-              {opt.label}
-            </ElRadio>
-          ))}
-        </ElRadioGroup>
+        <RenderWrapper styles={style}>
+          <ElRadioGroup {...props} {...model}>
+            {props.options.map((opt) => (
+              <ElRadio key={opt.value} value={opt.value} disabled={opt.disabled}>
+                {opt.label}
+              </ElRadio>
+            ))}
+          </ElRadioGroup>
+        </RenderWrapper>
       )
     }
   })

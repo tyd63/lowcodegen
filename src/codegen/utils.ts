@@ -111,31 +111,47 @@ export const resolve_animation = (ctx, block) => {
     calls(
       ctx,
       `
-        onMounted(() => {
+      onMounted(() => {
           play_animation(document.querySelector('[data-id="${block.id}"]'),${JSON.stringify(block.animations)})
-        })`
+      })
+      `
     )
   }
 }
 
-export const generate_handler = (handler) => {
-  const base = {
+export const generate_handler = (handlers: {
+  getAttrs: (block: Block, ctx: any) => any[]
+  getStartTag?: (tag: string, block: Block, ctx: any) => string
+  getEndTag?: (tag: string) => string
+  getChildren?: (block: Block, ctx: any) => string
+}) => {
+  const config = {
     getStartTag(tag, block, ctx) {
-      return `<${tag} data-id="${block.id}" ${resolve_attrs(this.getAttrs(block, ctx))}>`
+      const style = generate_common_style(block.style)
+      let str = '<div class="__render_wrapper"'
+      if (style.length) {
+        str += ` style="${style[1]}"`
+      }
+      str += `><${tag}`
+      const attrs = this.getAttrs(block, ctx)
+      attrs.unshift(['data-id', block.id])
+      if (attrs.length) {
+        str += ` ${resolve_attrs(attrs)}>`
+      }
+      return str
     },
     getEndTag(tag) {
-      return `</${tag}>`
+      return `</${tag}></div>`
     },
     handler(tag, { block, ctx }, children) {
       const startTag = this.getStartTag(tag, block, ctx)
       const endTag = this.getEndTag(tag)
-      const _children = children ? children : this.getChildren(block)
+      const _children = children ? children : (this.getChildren?.(block, ctx) ?? ' ')
       const ret = [startTag, _children, endTag]
       resolve_animation(ctx, block)
       return ret.join('')
     },
-    ...handler
+    ...handlers
   }
-
-  return base
+  return config
 }

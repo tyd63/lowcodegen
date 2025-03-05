@@ -5,10 +5,11 @@ import { genStyle } from '@/widgets/utils/style'
 import { renderPreview } from '@/widgets/utils/render'
 import { createInputProp } from '@/widgets/utils/props'
 import { genProps } from './props'
+import { RenderWrapper } from '@/renderer/BlockRender/render-wrapper'
 
 const registerConfig = () => {
   return defineComponent({
-    name: '选择器',
+    name: '选择器(单选)',
     key: 'select',
     group: 'form',
     draggable: true,
@@ -24,14 +25,12 @@ const registerConfig = () => {
       return renderPreview({ icon: component.icon, name: component.name })
     },
     render: ({ props, model, style }) => {
-      if (props.multiple) {
-        model.modelValue = []
-      }
-
       return (
-        <ElSelect {...props} {...model} style={style}>
-          {props.options?.map((opt) => <ElOption key={opt.value} value={opt.value} label={opt.label} disabled={opt.disabled}></ElOption>)}
-        </ElSelect>
+        <RenderWrapper styles={style}>
+          <ElSelect {...props} {...model}>
+            {props.options?.map((opt) => <ElOption key={opt.value} value={opt.value} label={opt.label} disabled={opt.disabled}></ElOption>)}
+          </ElSelect>
+        </RenderWrapper>
       )
     }
   })

@@ -5,6 +5,7 @@ import { genStyle } from '@/widgets/utils/style'
 import { renderPreview } from '@/widgets/utils/render'
 import { createInputProp } from '@/widgets/utils/props'
 import { genProps } from './props'
+import { RenderWrapper } from '@/renderer/BlockRender/render-wrapper'
 
 const registerConfig = () => {
   return defineComponent({
@@ -25,9 +26,9 @@ const registerConfig = () => {
     },
     render: ({ props, model, style }) => {
       return (
-        <div style={style}>
-          <ElDatePicker {...props} {...model} style={style}></ElDatePicker>
-        </div>
+        <RenderWrapper styles={style}>
+          <ElDatePicker {...props} {...model}></ElDatePicker>
+        </RenderWrapper>
       )
     }
   })

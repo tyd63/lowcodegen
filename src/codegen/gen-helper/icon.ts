@@ -1,6 +1,12 @@
-import { generate_common_props, generate_common_style, imports, generate_handler } from '../utils'
+import { generate_common_props, generate_common_style, imports, generate_handler, resolve_attrs } from '../utils'
 
 export default generate_handler({
+  getStartTag(tag, block, ctx) {
+    return `<${tag} ${resolve_attrs(this.getAttrs(block, ctx))}>`
+  },
+  getEndTag(tag) {
+    return `</${tag}>`
+  },
   getAttrs(block, ctx) {
     const _attrs = []
     const props = generate_common_props(block.props, ['icon'])

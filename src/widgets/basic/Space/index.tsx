@@ -7,6 +7,7 @@ import { renderSlot } from '@/renderer/renderSlot'
 import { ElSpace } from 'element-plus'
 
 import { genProps } from './props'
+import { RenderWrapper } from '@/renderer/BlockRender/render-wrapper'
 
 const registerConfig = () => {
   return defineComponent({
@@ -17,11 +18,7 @@ const registerConfig = () => {
     icon: () => <ContainerIcon />,
     props: genProps(),
     model: {},
-    style: genStyle({
-      width: {
-        value: '100%'
-      }
-    }),
+    style: genStyle(),
     events: [],
     actions: [],
     preview: (component) => {
@@ -37,9 +34,10 @@ const registerConfig = () => {
       }
 
       return (
-        <ElSpace {...props} style={style}>
-          {renderItems()}
-        </ElSpace>
+        <RenderWrapper styles={style}>
+          {' '}
+          <ElSpace {...props}>{renderItems()}</ElSpace>
+        </RenderWrapper>
       )
     }
   })

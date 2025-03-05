@@ -1,4 +1,4 @@
-import { generate_common_props, generate_common_style, imports, generate_handler, statements } from '../utils'
+import { generate_common_props, imports, generate_handler, statements } from '../utils'
 
 export default generate_handler({
   getAttrs(block, ctx) {
@@ -6,10 +6,6 @@ export default generate_handler({
     const props = generate_common_props(block.props)
     if (props.length) {
       _attrs.push(...props)
-    }
-    const style = generate_common_style(block.style)
-    if (style.length) {
-      _attrs.push(style)
     }
 
     if (block.model) {
@@ -19,8 +15,5 @@ export default generate_handler({
     }
 
     return _attrs
-  },
-  getChildren() {
-    return ''
   }
 })

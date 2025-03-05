@@ -1,4 +1,4 @@
-import { generate_common_props, generate_common_style, imports, generate_handler, statements, generate_common_icon } from '../utils'
+import { generate_common_props, imports, generate_handler, statements, generate_common_icon } from '../utils'
 
 export default generate_handler({
   getAttrs(block, ctx) {
@@ -7,11 +7,6 @@ export default generate_handler({
     if (props.length) {
       _attrs.push(...props)
     }
-    const style = generate_common_style(block.style)
-    if (style.length) {
-      _attrs.push(style)
-    }
-
     const icons = generate_common_icon(block.props, ['suffix-icon', 'prefix-icon'], ctx)
     if (icons.length) {
       _attrs.push(...icons)
@@ -24,8 +19,5 @@ export default generate_handler({
     }
 
     return _attrs
-  },
-  getChildren() {
-    return ''
   }
 })
