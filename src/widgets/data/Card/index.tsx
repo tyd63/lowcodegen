@@ -22,7 +22,7 @@ const registerConfig = () => {
     preview: (component) => {
       return renderPreview({ icon: component.icon, name: component.name })
     },
-    render: ({ props, children, id }) => {
+    render: ({ props, children, id, style }) => {
       const renderContent = () => {
         const slots: Record<string, unknown> = {}
         if (!props.hiddenHeader) {
@@ -32,7 +32,11 @@ const registerConfig = () => {
         return slots
       }
 
-      return <ElCard {...props}>{renderContent()}</ElCard>
+      return (
+        <ElCard {...props} style={style}>
+          {renderContent()}
+        </ElCard>
+      )
     }
   })
 }
