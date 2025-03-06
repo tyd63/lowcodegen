@@ -1,4 +1,4 @@
-import { generate_common_props, generate_common_style, generate_handler, resolve_attrs } from '../utils'
+import { generate_common_props, generate_handler } from '../utils'
 
 export default generate_handler({
   getAttrs(block) {

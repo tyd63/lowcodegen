@@ -2,6 +2,5 @@
   height: calc(100vh - 90px);
 }
 [data-dragging='true']:not([_componentkey='page'], [_componentkey='button']) {
-  box-sizing: content-box !important;
   padding: 3px;
 }

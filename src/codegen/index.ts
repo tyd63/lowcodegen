@@ -19,7 +19,7 @@ const walk = (block, ctx) => {
   }
   const key = block.key
   const tag = COMP_MAP[key]
-  const content = genHelper[key].handler(tag, { block, ctx }, children)
+  const content = genHelper[key].handler({ tag, block, ctx, children })
   return content
 }
 

@@ -23,5 +23,7 @@ export const COMP_MAP = {
   rate: 'el-rate',
   slider: 'el-slider',
   color: 'el-color-picker',
-  select: 'el-select'
+  select: 'el-select',
+  carousel: 'el-carousel',
+  'carousel-item': 'el-carousel-item'
 }

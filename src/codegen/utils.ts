@@ -143,7 +143,7 @@ export const generate_handler = (handlers: {
     getEndTag(tag) {
       return `</${tag}></div>`
     },
-    handler(tag, { block, ctx }, children) {
+    handler({ tag, block, ctx, children }) {
       const startTag = this.getStartTag(tag, block, ctx)
       const endTag = this.getEndTag(tag)
       const _children = children ? children : (this.getChildren?.(block, ctx) ?? ' ')

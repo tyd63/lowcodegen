@@ -1,0 +1,68 @@
+<style>
+  #scroll-container {
+    width: 300px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .content {
+    width: 1000px;
+    height: 200px;
+    background: linear-gradient(90deg, #f0f0f0, #fff);
+  }
+</style>
+
+<div id="scroll-container">
+  <div class="content"></div>
+</div>
+
+<script>
+  const container = document.getElementById('scroll-container');
+  let targetScrollLeft = 0;
+  let velocity = 0;
+  let isAnimating = false;
+
+  container.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    
+    // 动态速度计算
+    const delta = e.deltaX || e.deltaY; // 优先使用 deltaX
+    velocity += delta * 0.2;
+    
+    // 更新目标位置（带边界限制）
+    targetScrollLeft = Math.max(0, 
+      Math.min(container.scrollWidth - container.clientWidth, 
+      targetScrollLeft + delta * 1.2));
+
+    // 启动动画循环
+    if (!isAnimating) {
+      isAnimating = true;
+      requestAnimationFrame(animate);
+    }
+  });
+
+  function animate() {
+    // 惯性滚动
+    velocity *= 0.92; // 摩擦系数
+    targetScrollLeft += velocity;
+    
+    // 边界弹性
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    if (targetScrollLeft < 0 || targetScrollLeft > maxScroll) {
+      velocity *= -0.6; // 反弹
+      targetScrollLeft = Math.max(-30, Math.min(targetScrollLeft, maxScroll + 30));
+    }
+
+    // 应用滚动
+    container.scrollLeft = targetScrollLeft;
+
+    // 继续动画直到停止
+    if (Math.abs(velocity) > 0.1) {
+      requestAnimationFrame(animate);
+    } else {
+      isAnimating = false;
+      // 最终位置修正
+      container.scrollLeft = Math.max(0, 
+        Math.min(maxScroll, container.scrollLeft));
+    }
+  }
+</script>
