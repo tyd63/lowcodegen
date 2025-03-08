@@ -24,9 +24,7 @@ export default defineComponent({
       () => store.selectedId,
       (id) => {
         const curBlock = store.getBlockById(id)
-        if (curBlock) {
-          draft.value = cloneDeep(curBlock)
-        }
+        draft.value = cloneDeep(curBlock)
       },
       { immediate: true }
     )
@@ -48,7 +46,7 @@ export default defineComponent({
         return <div class="flex justify-center text-xs pt-10 text-[#999]">拖拽中...</div>
       }
       if (!draft.value) {
-        return <div class="flex justify-center text-xs pt-10 text-[#999]">请在左侧画布选中节点</div>
+        return <div class="flex justify-center text-xs pt-10 text-[#999]">请在画布选中节点</div>
       }
 
       if (draft.value?.lock) {

@@ -25,5 +25,6 @@ export const COMP_MAP = {
   color: 'el-color-picker',
   select: 'el-select',
   carousel: 'el-carousel',
-  'carousel-item': 'el-carousel-item'
+  'carousel-item': 'el-carousel-item',
+  image: 'el-image'
 }

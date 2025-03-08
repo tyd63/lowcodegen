@@ -1,9 +1,10 @@
-import { createInputNumberProp, createRadioProp, createSwitchProp } from '@/widgets/utils/props'
+import { createInputNumberProp, createInputProp, createRadioProp, createSwitchProp } from '@/widgets/utils/props'
 
 export const genProps = () => {
   return {
     'initial-index': createInputNumberProp({ label: '初始状态激活的幻灯片的索引，从0开始', value: 0, min: 0 }),
     interval: createInputNumberProp({ label: '自动切换间隔(毫秒)', value: 3000 }),
+    height: createInputProp({ label: '高度', value: '' }),
     trigger: createRadioProp({
       label: '指示器的触发方式',
       value: 'click',

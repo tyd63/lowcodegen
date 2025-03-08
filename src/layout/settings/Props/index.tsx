@@ -93,7 +93,7 @@ export default defineComponent({
       }
 
       return (
-        <ElForm class="lc-form" label-position="left" label-width="100">
+        <ElForm class="lc-form" label-position="left" label-width="150">
           <ElFormItem label="组件ID">{props.draft.id}</ElFormItem>
           {content}
         </ElForm>

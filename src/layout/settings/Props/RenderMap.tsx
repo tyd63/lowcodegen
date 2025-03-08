@@ -7,6 +7,7 @@ import { emitter } from '@/utils/emitter'
 
 import LcOptions from './Options'
 import RadioButtons from '@/components/RadioButtons'
+import LcList from './List'
 
 const updateEvent = (path) => {
   return (value) => {
@@ -59,5 +60,8 @@ export const renderMap = {
   date: ({ value, path, config }) => {
     const _props = pick(config, ['disabled'])
     return <ElDatePicker {..._props} model-value={value} onChange={updateEvent(path)} />
+  },
+  list: ({ value, path, config }) => {
+    return <LcList model-value={value} title={config.label} onChange={updateEvent(path)} />
   }
 }

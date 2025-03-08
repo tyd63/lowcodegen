@@ -3,7 +3,7 @@ import type { FunctionalComponent, VNode } from 'vue'
 export type NormalData = string | number | boolean
 
 export interface SelectOption {
-  label: string
+  label?: string
   value: NormalData
 }
 
@@ -61,8 +61,8 @@ export interface Block {
   name: string
   draggable: boolean
   lock: boolean
-  props: Record<string, NormalData>
-  model: Record<string, NormalData>
+  props: Record<string, any>
+  model: Record<string, any>
   style: Record<string, string | number>
   events: []
   actions: []

@@ -122,6 +122,13 @@ export const createOptionsProp = (options: ComponentPropConfig) => {
   } as ComponentPropConfig
 }
 
+export const createListProp = (options: ComponentPropConfig) => {
+  return {
+    key: 'list',
+    ...options
+  } as ComponentPropConfig
+}
+
 export const createPlacementProp = (def = 'top') => {
   return createSelectProp({
     label: '出现的位置',
