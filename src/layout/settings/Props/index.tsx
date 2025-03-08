@@ -28,6 +28,7 @@ export default defineComponent({
       // props
       if (props.component && props.component.props) {
         Object.entries<ComponentPropConfig>(props.component.props).map(([prop, config]) => {
+          if (!config.label) return
           const defaultRender = renderMap[config.key]?.({
             value: props.draft.props[prop],
             path: `props.${prop}`,

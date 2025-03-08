@@ -26,5 +26,10 @@ export const COMP_MAP = {
   select: 'el-select',
   carousel: 'el-carousel',
   'carousel-item': 'el-carousel-item',
-  image: 'el-image'
+  image: 'el-image',
+  badge: 'el-badge',
+  progress: 'el-progress',
+  tag: 'el-tag',
+  timeline: 'el-timeline',
+  'timeline-item': 'el-timeline-item'
 }

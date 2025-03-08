@@ -72,6 +72,8 @@
 
     &.is-disabled {
       cursor: not-allowed;
+      user-select: none;
+      display: none;
     }
 
     &:hover:not(.is-disabled) {

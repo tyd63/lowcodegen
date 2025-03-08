@@ -1,18 +1,19 @@
-import { ElCarouselItem } from 'element-plus'
+import { ElTimelineItem } from 'element-plus'
 import ContainerIcon from '@/icons/Container.vue'
 import { defineComponent } from '@/widgets/utils/define'
 import { genStyle } from '@/widgets/utils/style'
-import { renderSlot } from '@/renderer/renderSlot'
+import { genProps } from './props'
 import { renderPreview } from '@/widgets/utils/render'
+import { renderSlot } from '@/renderer/renderSlot'
 
 const registerConfig = () => {
   return defineComponent({
-    name: '走马灯项',
-    key: 'carousel-item',
+    name: '时间线项',
+    key: 'timeline-item',
     group: 'data',
     draggable: false,
     icon: () => <ContainerIcon />,
-    props: {},
+    props: genProps(),
     model: {},
     style: genStyle(),
     events: [],
@@ -21,11 +22,13 @@ const registerConfig = () => {
     preview: (component) => {
       return renderPreview({ icon: component.icon, name: component.name })
     },
-    render: ({ props, style, id, children }) => {
+    render: ({ props, style, children, id }) => {
       return (
-        <ElCarouselItem {...props} style={style}>
-          {renderSlot(id, 'default', children)}
-        </ElCarouselItem>
+        <ElTimelineItem {...props} style={style}>
+          {{
+            default: () => renderSlot(id, 'default', children)
+          }}
+        </ElTimelineItem>
       )
     }
   })

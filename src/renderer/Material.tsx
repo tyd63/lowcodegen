@@ -13,7 +13,7 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     const dragEvents = {
-      draggable: true,
+      draggable: props.comp.draggable,
       ondragstart(e: DragEvent) {
         e.dataTransfer.setData('comp', JSON.stringify(props.comp))
         createImage(e, props.comp.name)
