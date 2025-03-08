@@ -94,7 +94,16 @@ export default defineComponent({
 
       return (
         <ElForm class="lc-form" label-position="left" label-width="150">
-          <ElFormItem label="组件ID">{props.draft.id}</ElFormItem>
+          <ElFormItem>
+            {{
+              label: () => {
+                return <div class="form-label">组件ID</div>
+              },
+              default() {
+                return props.draft.id
+              }
+            }}
+          </ElFormItem>
           {content}
         </ElForm>
       )

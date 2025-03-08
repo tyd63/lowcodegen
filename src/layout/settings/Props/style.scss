@@ -1,16 +1,12 @@
 .lc-form {
   .el-form-item {
     margin-bottom: 12px;
-
-    .el-form-item__label {
-      font-size: 12px;
-      line-height: 16px;
-    }
-
     .form-label {
       height: 100%;
       display: flex;
       align-items: center;
+      font-size: 12px;
+      line-height: 16px;
     }
   }
 }
