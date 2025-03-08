@@ -40,7 +40,7 @@ export default defineComponent({
               {{
                 default: () => defaultRender,
                 label: () => (
-                  <div class="flex items-center gap-x-0.5 flex-wrap overflow-hidden">
+                  <div class="form-label">
                     <span>{config.label}</span>
                     {config.tooltip && (
                       <ElTooltip content={config.tooltip} placement="top">
@@ -71,7 +71,7 @@ export default defineComponent({
                     config
                   }),
                 label: () => (
-                  <div class="flex items-center gap-x-0.5">
+                  <div class="form-label">
                     {config.label}
                     {config.tooltip && (
                       <ElTooltip content={config.tooltip} placement="top">

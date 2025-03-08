@@ -69,13 +69,13 @@ export const genProps = () => {
       label: '切换箭头的显示时机',
       value: 'hover',
       options: [
-        { label: '一直', value: 'always' },
+        { label: 'always', value: 'always' },
         {
-          label: '鼠标移入',
+          label: 'hover',
           value: 'hover'
         },
         {
-          label: '不显示',
+          label: 'never',
           value: 'never'
         }
       ]

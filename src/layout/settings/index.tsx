@@ -24,7 +24,9 @@ export default defineComponent({
       () => store.selectedId,
       (id) => {
         const curBlock = store.getBlockById(id)
-        draft.value = cloneDeep(curBlock)
+        if (curBlock) {
+          draft.value = cloneDeep(curBlock)
+        }
       },
       { immediate: true }
     )

@@ -1,22 +1,22 @@
-import { createInputProp, createSelectProp, createSwitchProp } from '@/widgets/utils/props'
+import { createInputProp, createRadioProp, createSelectProp, createSwitchProp } from '@/widgets/utils/props'
 
 export const genProps = () => {
   return {
     title: createInputProp({ label: '标题', value: '卡牌标题' }),
-    shadow: createSelectProp({
+    shadow: createRadioProp({
       label: '阴影状态',
       value: 'never',
       options: [
         {
-          label: '一直都有',
+          label: 'always',
           value: 'always'
         },
         {
-          label: '鼠标经过',
+          label: 'hover',
           value: 'hover'
         },
         {
-          label: '从不',
+          label: 'never',
           value: 'never'
         }
       ]

@@ -45,5 +45,5 @@ text-center
 text-[#999]
 text-[var(--el-text-color-regular)]
 
-
-
+leading-none
+leading-tight

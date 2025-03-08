@@ -32,7 +32,7 @@ export const genProps = () => {
       ]
     }),
     'hide-on-click-modal': createSwitchProp({
-      label: '当开启preview功能时，是否可以通过点击遮罩层关闭',
+      label: '是否可以通过点击遮罩层关闭',
       value: false
     }),
     lazy: createSwitchProp({
@@ -41,7 +41,7 @@ export const genProps = () => {
     }),
     'preview-src-list': createListProp({
       row: true,
-      label: '开启图片预览功能',
+      label: '图片预览',
       value: []
     })
   }
