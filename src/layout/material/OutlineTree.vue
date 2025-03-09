@@ -62,9 +62,9 @@
 
 <template>
   <Panel title="大纲树" @close="$emit('close')">
+    <!-- :key="activeId" -->
     <el-tree
       class="lc-outline-tree"
-      :key="activeId"
       :current-node-key="activeId"
       :indent="indent"
       :data="data"

@@ -9,6 +9,8 @@
   import { store } from '@/store'
   import { ref } from 'vue'
 
+  import { undoIcon, redoIcon } from '@/components/Icon'
+
   const { themeColor, themeColors, themeMode, changeThemeColor, changeThemeMode } = useTheme()
 
   const handleGlobalBlocks = () => {
@@ -34,6 +36,14 @@
       title: '代码已生成'
     })
   }
+
+  const undo = () => {
+    store.undo()
+  }
+
+  const redo = () => {
+    store.redo()
+  }
 </script>
 
 <template>
@@ -41,8 +51,19 @@
     <div class="font-bold">低代码平台</div>
     <div class="flex items-center">
       <div class="flex mr-5">
+        <el-button-group class="mr-4">
+          <el-button @click="undo">
+            <undoIcon />
+            撤销
+          </el-button>
+          <el-button @click="redo"
+            >恢复
+            <redoIcon />
+          </el-button>
+        </el-button-group>
+
         <el-button @click="handleGlobalBlocks">全局节点</el-button>
-        <el-button @click="handleCodegen" :loading="codeGenLoading">生成代码</el-button>
+        <el-button type="primary" @click="handleCodegen" :loading="codeGenLoading">生成代码</el-button>
       </div>
 
       <el-switch

@@ -11,6 +11,10 @@ interface State {
   selectedId: string | null
   isDragging: boolean
   hoverId: string
+  history: {
+    current: number
+    records: Block[]
+  }
 }
 
 const state: State = {
@@ -19,10 +23,37 @@ const state: State = {
   componentMap: {},
   selectedId: null,
   hoverId: null,
-  isDragging: false
+  isDragging: false,
+  history: {
+    current: -1,
+    records: []
+  }
 }
 
 const actions = {
+  addHistory() {
+    this.history.current += 1
+    this.history.records[this.history.current] = cloneDeep(this.globalData.blocks)
+  },
+  redo() {
+    if (this.history.current < this.history.records.length - 1) {
+      this.history.current += 1
+      const blocks = this.history.records[this.history.current]
+      if (blocks) {
+        this.globalData.blocks = blocks
+        this.setSelectedId(null)
+      }
+    }
+  },
+  undo() {
+    if (this.history.current > -1) {
+      this.history.current -= 1
+      const blocks = this.history.records[this.history.current]
+      this.globalData.blocks = blocks ?? defaultGlobalData().blocks
+
+      this.setSelectedId(null)
+    }
+  },
   // 拖拽 在合适的位置插入 block
   insetBlock(id, slotKey, block, idx = 0) {
     const blocks = this.globalData.blocks
@@ -33,6 +64,8 @@ const actions = {
     }
     slotBlocks.splice(idx, 0, block)
     this.setSelectedId(block.id)
+
+    this.addHistory()
   },
   removeBlockById(id: string) {
     const blocks = this.globalData.blocks
@@ -49,6 +82,7 @@ const actions = {
         idx
       }
     }
+    this.addHistory()
   },
   copyBlock(block: Block) {
     const _block = cloneDeep(block)
@@ -60,6 +94,8 @@ const actions = {
     const idx = parent.children[slotKey].findIndex((b) => b.id === block.id)
     parent.children[slotKey].splice(idx + 1, 0, _block)
     this.setSelectedId(_block.id)
+
+    this.addHistory()
   },
   // 更新block属性
   async updateBlock({ id, path, value, block = undefined }) {
@@ -82,6 +118,8 @@ const actions = {
     this.setSelectedId('')
     await nextTick()
     this.setSelectedId(id)
+
+    this.addHistory()
   },
   updateComponents(components: Component[], map: Record<string, Component>) {
     this.components = components

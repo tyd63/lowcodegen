@@ -10,6 +10,7 @@
 
   import { store } from '@/store'
   import { onMounted } from 'vue'
+  import { useKeyboard } from './hooks/use-keyboard'
 
   // 注册组件
   const { componentMap, components } = registerComponents()
@@ -24,6 +25,13 @@
       formData
     })
   )
+
+  useKeyboard('[ctrlKey,metaKey]+z', () => {
+    store.undo()
+  })
+  useKeyboard('[ctrlKey,metaKey]+y', () => {
+    store.redo()
+  })
 
   onUnmounted(() => {
     removeDraggable()
