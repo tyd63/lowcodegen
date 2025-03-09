@@ -2,7 +2,6 @@ import { onMounted, onUnmounted } from 'vue'
 
 export const useKeyboard = (key: string, cb: (key?: string) => void) => {
   const handler = (e: KeyboardEvent) => {
-    e.preventDefault()
     let pass = true
     key.split('+').forEach((part) => {
       if (/^\[(.*?)\]$/.test(part)) {
@@ -13,14 +12,16 @@ export const useKeyboard = (key: string, cb: (key?: string) => void) => {
       }
     })
     if (pass) {
+      e.preventDefault()
+      e.stopPropagation()
       cb(key)
     }
   }
 
   onMounted(() => {
-    window.addEventListener('keydown', handler)
+    document.addEventListener('keydown', handler)
   })
   onUnmounted(() => {
-    window.removeEventListener('keydown', handler)
+    document.removeEventListener('keydown', handler)
   })
 }

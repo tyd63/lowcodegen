@@ -32,7 +32,7 @@
       loader: 'drawer',
       content: code,
       language: 'html',
-      width: '90%',
+      width: '70%',
       title: '代码已生成'
     })
   }
