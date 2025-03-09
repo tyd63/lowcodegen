@@ -8,6 +8,10 @@ export default defineComponent({
     modelValue: {
       type: Array,
       default: undefined
+    },
+    title: {
+      type: String,
+      default: ''
     }
   },
   emits: ['update:modelValue', 'change'],
@@ -38,7 +42,7 @@ export default defineComponent({
 
     return () => {
       return (
-        <Collapse style="margin: 0 -16px 12px;border:0;" title="指定可选项" default-collapse>
+        <Collapse style="margin: 0 -16px 12px;border:0;" title={props.title} default-collapse>
           <table class="text-xs w-full table-auto">
             <thead>
               <tr>

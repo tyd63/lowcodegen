@@ -6,7 +6,7 @@ export const genProps = () => {
     disabled: createSwitchProp({ label: '是否禁用', value: false }),
     border: createSwitchProp({ label: '显示边框', value: false }),
     options: createOptionsProp({
-      label: 'Options',
+      label: '指定可选项',
       row: true,
       value: [
         { label: 'Option1', value: 'option1' },

@@ -2,7 +2,7 @@ import { createInputNumberProp, createInputProp, createSizeProp, createRadioProp
 
 export const genProps = () => {
   return {
-    labelWidth: createInputNumberProp({ label: '标签宽度', value: 80 }),
+    labelWidth: createInputNumberProp({ label: '标签宽度', value: 120 }),
     labelSuffix: createInputProp({ label: '标签后缀', value: ':', clearable: true }),
     size: createSizeProp(),
     labelPosition: createRadioProp({

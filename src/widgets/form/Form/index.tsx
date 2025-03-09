@@ -4,8 +4,8 @@ import { defineComponent } from '@/widgets/utils/define'
 import { genStyle } from '@/widgets/utils/style'
 import { renderPreview } from '@/widgets/utils/render'
 import { renderSlot } from '@/renderer/renderSlot'
-import registerFormItemConfig from '../FormItem'
 import { genProps } from './props'
+import { getFormDemo } from './getFormDemo'
 
 const registerConfig = () => {
   return defineComponent({
@@ -20,7 +20,7 @@ const registerConfig = () => {
     events: [],
     actions: [],
     children: {
-      default: [registerFormItemConfig(), registerFormItemConfig(), registerFormItemConfig()]
+      default: getFormDemo()
     },
     preview: (component) => {
       return renderPreview({ icon: component.icon, name: component.name })

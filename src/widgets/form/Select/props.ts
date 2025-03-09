@@ -9,6 +9,7 @@ export const genProps = () => {
     filterable: createSwitchProp({ label: '是否可搜索', value: false }),
     options: createOptionsProp({
       row: true,
+      label: '指定可选项',
       value: [
         { label: 'label1', value: 'value1', disabled: false },
         { label: 'label2', value: 'value2', disabled: false }

@@ -55,16 +55,16 @@ export default defineComponent({
         return <div class="flex justify-center text-xs pt-10 text-[#999]">节点已被锁住,无法编辑</div>
       }
 
-      if (isPage(draft.value?.id)) {
-        return (
-          <>
-            <Breadcrumbs />
-            <ElDivider>
-              <span class="text-xs text-[#999] font-normal">属性</span>
-            </ElDivider>
-          </>
-        )
-      }
+      // if (isPage(draft.value?.id)) {
+      //   return (
+      //     <>
+      //       <Breadcrumbs />
+      //       <ElDivider>
+      //         <span class="text-xs text-[#999] font-normal">属性</span>
+      //       </ElDivider>
+      //     </>
+      //   )
+      // }
       return (
         <>
           <Breadcrumbs />

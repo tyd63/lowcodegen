@@ -54,8 +54,8 @@ export const renderMap = {
   icon: ({ value, path }) => {
     return <Icons model-value={value} onChange={updateEvent(path)} />
   },
-  options: ({ value, path }) => {
-    return <LcOptions model-value={value} onChange={updateEvent(path)} />
+  options: ({ value, path, config }) => {
+    return <LcOptions model-value={value} title={config.label} onChange={updateEvent(path)} />
   },
   date: ({ value, path, config }) => {
     const _props = pick(config, ['disabled'])

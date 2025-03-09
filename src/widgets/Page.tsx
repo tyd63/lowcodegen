@@ -1,6 +1,7 @@
 import PageIcon from '@/icons/Page.vue'
 import { defineComponent } from './utils/define'
 import { renderSlot } from '@/renderer/renderSlot'
+import { genStyle } from '@/widgets/utils/style'
 
 export const registerPageConfig = () => {
   return defineComponent({
@@ -12,14 +13,14 @@ export const registerPageConfig = () => {
     icon: () => <PageIcon />,
     props: {},
     model: {},
-    style: {},
+    style: genStyle(),
     events: [],
     actions: [],
     children: {
       default: []
     },
-    render: ({ children, id }) => {
-      return <div>{renderSlot(id, 'default', children)}</div>
+    render: ({ style, children, id }) => {
+      return <div style={style}>{renderSlot(id, 'default', children)}</div>
     }
   })
 }
