@@ -53,12 +53,10 @@
       <div class="flex mr-5">
         <el-button-group class="mr-4">
           <el-button @click="undo">
-            <undoIcon />
-            撤销
+            <undoIcon class="text-xl" />
           </el-button>
-          <el-button @click="redo"
-            >恢复
-            <redoIcon />
+          <el-button @click="redo">
+            <redoIcon class="text-xl" />
           </el-button>
         </el-button-group>
 

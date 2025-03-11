@@ -32,15 +32,17 @@ const state: State = {
 
 const actions = {
   addHistory() {
+    const snapshot = cloneDeep(this.globalData.blocks)
     this.history.current += 1
-    this.history.records[this.history.current] = cloneDeep(this.globalData.blocks)
+    this.history.records[this.history.current] = snapshot
+    this.history.records.length = this.history.current + 1
   },
   redo() {
     if (this.history.current < this.history.records.length - 1) {
       this.history.current += 1
       const blocks = this.history.records[this.history.current]
       if (blocks) {
-        this.globalData.blocks = blocks
+        this.globalData.blocks = cloneDeep(blocks)
         this.setSelectedId(null)
       }
     }
@@ -49,7 +51,7 @@ const actions = {
     if (this.history.current > -1) {
       this.history.current -= 1
       const blocks = this.history.records[this.history.current]
-      this.globalData.blocks = blocks ?? defaultGlobalData().blocks
+      this.globalData.blocks = cloneDeep(blocks) ?? defaultGlobalData().blocks
 
       this.setSelectedId(null)
     }
@@ -75,6 +77,7 @@ const actions = {
     if (~idx) {
       const block = slotChildren.splice(idx, 1)[0]
       this.setSelectedId(null)
+      this.addHistory()
       return {
         block,
         parentId: parent.id,
@@ -82,7 +85,6 @@ const actions = {
         idx
       }
     }
-    this.addHistory()
   },
   copyBlock(block: Block) {
     const _block = cloneDeep(block)

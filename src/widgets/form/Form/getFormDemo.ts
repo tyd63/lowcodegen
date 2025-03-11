@@ -27,7 +27,6 @@ export const getFormDemo = () => {
 
   const formItemConfig3 = registerFormItemConfig()
   const selectConfig = registerSelectConfig()
-  console.log(selectConfig)
   selectConfig.style.width.value = '100%'
   formItemConfig3.props.label.value = 'Select'
   formItemConfig3.children.default = [selectConfig]
